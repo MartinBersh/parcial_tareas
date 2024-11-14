@@ -31,4 +31,8 @@ jobs:
 
       - name: Confirmar tests exitoso
         if: ${{ success() }}
-        run: echo "Todo correcto, test pasadísimos"
+        run: echo "Desplegado"
+
+      - name: Notificación de error
+        if: ${{ failure() }}
+        run: echo "Error, las pruebas no pasaron"

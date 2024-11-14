@@ -1,16 +1,23 @@
 package com.ejemplo.tareas;
 
 import com.ejemplo.tareas.model.Tarea;
+import com.ejemplo.tareas.repository.TareaRepository;
+import com.ejemplo.tareas.services.TareaServices;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.test.context.ActiveProfiles;
+
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PruebasEndPointsTareas {
@@ -22,6 +29,13 @@ public class PruebasEndPointsTareas {
     void setUp() {
         RestAssured.port = port;
     }
+
+    private TareaServices tareaServices;
+
+    private List<Tarea> tareas;
+
+    @Autowired
+    private TareaRepository tareaRepository;
 
     @Test
     void testCrearTarea() {
@@ -38,9 +52,8 @@ public class PruebasEndPointsTareas {
                 .body("descripcion", equalTo("Terminar el parcial"));
     }
 
-
     @Test
-    void testGetUser() {
+    void testGetTarea() {
         Tarea tareaCreada = new Tarea();
         tareaCreada.setDescripcion("Terminar el semestre");
 
@@ -67,7 +80,7 @@ public class PruebasEndPointsTareas {
         Tarea createdUser = new Tarea();
         createdUser.setDescripcion("Almorzar weno");
 
-        Integer userId = given()
+        Integer tareaId = given()
                 .contentType(ContentType.JSON)
                 .body(createdUser)
                 .when()
@@ -82,7 +95,7 @@ public class PruebasEndPointsTareas {
                 .contentType(ContentType.JSON)
                 .body(createdUser)
                 .when()
-                .put("/api/tareas/{id}", userId)
+                .put("/api/tareas/{id}", tareaId)
                 .then()
                 .statusCode(200)
                 .body("descripcion", equalTo("Almorzar mas o menos weno"));
@@ -93,7 +106,7 @@ public class PruebasEndPointsTareas {
         Tarea createdUser = new Tarea();
         createdUser.setDescripcion("Pasear al perro");
 
-        Integer userId = given()
+        Integer tareaId = given()
                 .contentType(ContentType.JSON)
                 .body(createdUser)
                 .when()
@@ -104,7 +117,7 @@ public class PruebasEndPointsTareas {
 
         given()
                 .when()
-                .delete("/api/tareas/{id}", userId)
+                .delete("/api/tareas/{id}", tareaId)
                 .then()
                 .statusCode(200);
     }

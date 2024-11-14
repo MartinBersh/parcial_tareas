@@ -13,13 +13,13 @@ public class TareaServices {
 
     private final List<Tarea> tareas;
 
-    private final TareaRepository repository;
+    private final TareaRepository repository = null;
     private final AtomicLong counter = new AtomicLong();
 
-    public TareaServices(List<Tarea> tareas, TareaRepository repository) {
+    public TareaServices(List<Tarea> tareas) {
         this.tareas = tareas;
-        this.repository = repository;
     }
+
 
     public Tarea createTarea(Tarea tarea) {
         tarea.setId(counter.incrementAndGet());
