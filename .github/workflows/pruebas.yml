@@ -32,6 +32,9 @@ jobs:
           docker-compose logs
           sleep 20
 
+      - name: Run Tests
+        run: docker-compose run --rm todolist_test
+
       - name: Simulate Deployment
         if: success()
         run: echo "App tareas desplegada correctamente"

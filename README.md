@@ -21,7 +21,6 @@ cd [NOMBRE_DEL_DIRECTORIO]
 El proyecto utiliza Maven para la gestión de dependencias. Las principales dependencias incluyen:
 - Spring Boot 3.4.0
 - Spring Data JPA
-- Spring Data Redis
 - PostgreSQL Driver
 - Lombok
 - Spring Boot Test
@@ -79,13 +78,13 @@ mvn test -Dtest=UnitTest
 - **Gestión de Dependencias**: Maven
 
 ### Bases de Datos
-- **Principal**: PostgreSQL 15
-    - Almacenamiento persistente de tareas
+- **Principal**: PostgreSQL
+
+
 ### Contenedorización
 - Docker
 - Docker Compose
-    - Orquestación de servicios
-    - Configuración de entorno de desarrollo
+
 
 ### Testing
 - JUnit

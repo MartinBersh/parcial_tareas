@@ -10,7 +10,6 @@ Este archivo proporciona instrucciones detalladas para ejecutar el proyecto, ya 
 - **Java JDK 17** instalado.
 - **Maven**, o puedes usar el Maven Wrapper incluido en el proyecto.
 - **PostgreSQL** configurado localmente.
-- **Redis** configurado localmente.
 
 ### **Pasos de Ejecución**
 
@@ -19,12 +18,6 @@ Este archivo proporciona instrucciones detalladas para ejecutar el proyecto, ya 
     - Crea una base de datos llamada `todolist` con el siguiente comando:
       ```sql
       CREATE DATABASE todolist;
-      ```
-
-2. **Configurar Redis**
-    - Verifica que Redis esté activo en el puerto `6379`:
-      ```bash
-      redis-server
       ```
 
 3. **Compilar el Proyecto**
@@ -39,18 +32,6 @@ Este archivo proporciona instrucciones detalladas para ejecutar el proyecto, ya 
       ./mvnw spring-boot:run
       ```
 
-5. **Verificar la Ejecución**
-    - Accede a la aplicación en [http://localhost:8080](http://localhost:8080).
-    - Prueba los endpoints:
-        - **GET**: `http://localhost:8080/api/tasks`
-        - **POST**: `http://localhost:8080/api/tasks`
-
-### **Problemas Comunes**
-- **Error al conectar con PostgreSQL**: Asegúrate de que el servicio está activo y las credenciales son correctas.
-- **Error al conectar con Redis**: Verifica que Redis esté corriendo en el puerto adecuado.
-- **Conflicto de puertos**: Asegúrate de que los puertos `8080`, `5432` y `6379` no estén siendo utilizados por otros servicios.
-
----
 
 ## 2. Ejecución con Docker
 
@@ -67,7 +48,6 @@ Este archivo proporciona instrucciones detalladas para ejecutar el proyecto, ya 
     - Este comando:
         - Construye la imagen de la aplicación.
         - Inicia PostgreSQL en el puerto `5434`.
-        - Inicia Redis en el puerto `6379`.
         - Levanta la aplicación en el puerto `8080`.
 
 2. **Verificar los Contenedores**
@@ -78,7 +58,6 @@ Este archivo proporciona instrucciones detalladas para ejecutar el proyecto, ya 
     - Deberías ver tres servicios activos:
         - `todolist_app` (aplicación principal).
         - `todolist_db` (PostgreSQL).
-        - `redis` (Redis).
 
 3. **Acceso y Logs**
     - Accede a la aplicación en [http://localhost:8080](http://localhost:8080).
