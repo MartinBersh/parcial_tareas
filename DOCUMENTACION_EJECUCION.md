@@ -62,7 +62,7 @@ Este archivo proporciona instrucciones detalladas para ejecutar el proyecto, ya 
 1. **Construir y Ejecutar con Docker Compose**
     - Ejecuta el siguiente comando:
       ```bash
-      docker-compose up -d
+      docker compose up -d
       ```
     - Este comando:
         - Construye la imagen de la aplicación.
@@ -73,7 +73,7 @@ Este archivo proporciona instrucciones detalladas para ejecutar el proyecto, ya 
 2. **Verificar los Contenedores**
     - Comprueba el estado de los contenedores:
       ```bash
-      docker-compose ps
+      docker compose ps
       ```
     - Deberías ver tres servicios activos:
         - `todolist_app` (aplicación principal).
@@ -84,13 +84,13 @@ Este archivo proporciona instrucciones detalladas para ejecutar el proyecto, ya 
     - Accede a la aplicación en [http://localhost:8080](http://localhost:8080).
     - Para monitorear los logs de la aplicación:
       ```bash
-      docker-compose logs -f todolist_app
+      docker compose logs -f todolist_app
       ```
 
 4. **Detener los Servicios**
     - Para detener todos los contenedores:
       ```bash
-      docker-compose down
+      docker compose down
       ```
 
 ### **Problemas Comunes**
