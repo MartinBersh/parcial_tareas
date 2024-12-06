@@ -19,19 +19,16 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest
 public class PruebasEndPointsTareas {
 
     @LocalServerPort
     private int port;
-
     @BeforeEach
     void setUp() {
         RestAssured.port = port;
     }
-
     private TareaServices tareaServices;
-
     private List<Tarea> tareas;
 
     @Autowired
@@ -76,7 +73,7 @@ public class PruebasEndPointsTareas {
     }
 
     @Test
-    void testUpdateUser() {
+    void testUpdateTarea() {
         Tarea createdUser = new Tarea();
         createdUser.setDescripcion("Almorzar weno");
 
@@ -102,7 +99,7 @@ public class PruebasEndPointsTareas {
     }
 
     @Test
-    void testDeleteUser() {
+    void testDeleteTarea() {
         Tarea createdUser = new Tarea();
         createdUser.setDescripcion("Pasear al perro");
 

@@ -27,9 +27,6 @@ public class TareaServices {
         return tarea;
     }
 
-    public List<Tarea> getAllTareas() {
-        return repository.findAll();
-    }
     public Tarea getTareaById(Long id) {
         return tareas.stream()
                 .filter(tarea -> tarea.getId().equals(id))

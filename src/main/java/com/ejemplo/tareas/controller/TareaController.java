@@ -23,10 +23,6 @@ public class TareaController {
         return tareaServices.createTarea(tarea);
     }
 
-    @GetMapping
-    public List<Tarea> obtenerTodasLasTareas() {
-        return tareaServices.getAllTareas();
-    }
     @GetMapping("/{id}")
     public Tarea getTarea(@PathVariable Long id) {
         return tareaServices.getTareaById(id);
